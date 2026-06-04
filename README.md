@@ -16,6 +16,7 @@
 * Logistic Regression vs Multinomial Naive Bayes vs SVM
 * With vs without stopwords
 * Feature engineering (Process text or title only OR combine into singular feature etc)
+* Transformer/BERT (optional stretch goal)
 
 ## Research:
 * NLP
