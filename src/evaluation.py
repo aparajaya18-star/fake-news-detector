@@ -13,15 +13,19 @@ def evaluate(Y_test, Y_pred, model, feature_names, plot_cm= False, verbose=True)
     cm = confusion_matrix(Y_test, Y_pred)
 
     # Top positive and negative features
-    coefficients = model.coef_[0] 
+    if hasattr(model, "coef_"):
+        importance = model.coef_[0] 
+    elif hasattr(model, "feature_log_prob_"):
+        importance = (model.feature_log_prob_[1]
+        - model.feature_log_prob_[0])
 
     df_features = pd.DataFrame({
         'Feature': feature_names,
-        'Coefficient': coefficients
+        'Importance': importance
     })
 
-    top_negative_features = df_features.sort_values(by='Coefficient', ascending=True).head(5)
-    top_positive_features = df_features.sort_values(by='Coefficient', ascending=False).head(5)
+    top_negative_features = df_features.sort_values(by='Importance', ascending=True).head(5)
+    top_positive_features = df_features.sort_values(by='Importance', ascending=False).head(5)
 
     # Display evaluation results
     if verbose:

@@ -41,6 +41,7 @@ def run_experiment(df, model, vectorizer, experiment_name="", ngramRange=(1,2), 
 
     return {
         "Experiment": experiment_name,
+        "Vectorizer": vectorizer,
         "Accuracy": accuracy,
         "Precision": precision,
         "Recall": recall,
