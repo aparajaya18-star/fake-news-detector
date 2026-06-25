@@ -147,6 +147,24 @@ Performance:
 
 ---
 
+## Cross-Dataset Evaluation
+
+To evaluate real-world robustness, the best-performing models trained on WELFake were tested on two external fake-news datasets (IFND and WWFND).
+
+| Dataset                     | Best Accuracy |
+| --------------------------- | ------------: |
+| WELFake (held-out test set) |        97.95% |
+| IFND                        |        66.66% |
+| WWFND                       |        50.11% |
+
+Although the models achieved excellent performance on WELFake, accuracy dropped substantially on external datasets.
+
+This result highlights a common challenge in fake news detection: models often learn dataset-specific vocabulary and stylistic patterns that do not transfer well to unseen sources.
+
+Cross-dataset evaluation revealed that feature representation and dataset characteristics have a larger impact on generalization than classifier choice or hyperparameter tuning.
+
+---
+
 ## Key Findings
 
 * Linear models perform exceptionally well on this dataset.
@@ -229,13 +247,13 @@ Example workflow:
 
 ## Future Work
 
-* Hyperparameter optimization with grid search
-* Cross-validation experiments
-* Dimensionality reduction techniques
-* Word embeddings
-* Transformer-based models (BERT)
-* Model explainability with SHAP or LIME
-* Deployment as a web application
+* Evaluate on additional external fake-news datasets
+* Perform domain adaptation experiments
+* Investigate feature normalization techniques for improved cross-dataset robustness
+* Explore word embeddings and sentence embeddings
+* Compare classical ML approaches with transformer models (BERT, RoBERTa)
+* Perform systematic cross-validation across multiple datasets
+* Deploy the best-performing model as a web application
 
 ---
 

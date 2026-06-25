@@ -18,7 +18,11 @@ def vectorize(df, method, mdf=5, ngramRange=(1,2), max_features_title=50000, max
     elif method == "count":
         vectorizer_title = CountVectorizer(min_df=mdf, ngram_range=ngramRange, max_features=max_features_title)
         vectorizer_text = CountVectorizer(min_df=mdf, ngram_range=ngramRange, max_features=max_features_text)
-    
+    else:
+        raise ValueError(
+            "method must be 'tfidf' or 'count'"
+        )
+
     # Vectorize text and/or title
     if vec_text and vec_title:
         # Fit and transform the data
